@@ -972,7 +972,7 @@ Object.defineProperties(Request.prototype, {
         data: value,
         type: this.getHeader("Content-Type")
       });
-      this.setHeader("Content-Type",this.content.type);
+      this.setHeader("Content-Type", 'application/json');
       this.setHeader("Content-Length",this.content.length);
       return this;
     },
@@ -1962,13 +1962,10 @@ Object.defineProperties(Content.prototype,{
         return this._type;
       } else {
         if (this._data) {
-          switch(typeof this._data) {
-            case "string": return "text/plain";
-            case "object": return "application/json";
-          }
+           return "application/json";
         }
       }
-      return "text/plain";
+      return "application/json";
     },
     set: function(value) {
       this._type = value;
@@ -5330,7 +5327,6 @@ b,c){var d;d=b&&b.hasOwnProperty("constructor")?b.constructor:function(){a.apply
       this.consumes = consumes;
       this.produces = produces;
       this["do"] = __bind(this["do"], this);
-
       if (this.nickname == null) {
         this.resource.api.fail("SwaggerOperations must have a nickname.");
       }
@@ -5495,6 +5491,8 @@ b,c){var d;d=b&&b.hasOwnProperty("constructor")?b.constructor:function(){a.apply
           }
         }
       }
+      params.body = JSON.stringify(args);
+
       req = new SwaggerRequest(this.method, this.urlify(args), params, opts, callback, error, this);
       if (opts.mock != null) {
         return req;
@@ -5633,9 +5631,7 @@ b,c){var d;d=b&&b.hasOwnProperty("constructor")?b.constructor:function(){a.apply
       parent = params["parent"];
       requestContentType = "application/json";
       if (body && (this.type === "POST" || this.type === "PUT" || this.type === "PATCH")) {
-        if (this.opts.requestContentType) {
-          requestContentType = this.opts.requestContentType;
-        }
+
       } else {
         if (((function() {
           var _i, _len, _ref, _results;

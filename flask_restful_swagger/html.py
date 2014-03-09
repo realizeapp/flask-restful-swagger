@@ -16,9 +16,9 @@ homepage_html = """
 <head>
   <title>API Spec</title>
   <link href='//fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css'/>
-  <link href='http://rantav.github.io/flask-restful-swagger/static/css/hightlight.default.css' media='screen' rel='stylesheet' type='text/css'/>
-  <link href='http://rantav.github.io/flask-restful-swagger/static/css/screen.css' media='screen' rel='stylesheet' type='text/css'/>
-  <script type="text/javascript" src="http://rantav.github.io/flask-restful-swagger/static/js/all.js" /></script>
+  <link href='http://realizeapp.github.io/flask-restful-swagger/static/css/hightlight.default.css' media='screen' rel='stylesheet' type='text/css'/>
+  <link href='http://realizeapp.github.io/flask-restful-swagger/static/css/screen.css' media='screen' rel='stylesheet' type='text/css'/>
+  <script type="text/javascript" src="http://realizeapp.github.io/flask-restful-swagger/static/js/all.js" /></script>
   <script type="text/javascript">
     $(function () {
       window.swaggerUi = new SwaggerUi({
@@ -44,7 +44,7 @@ homepage_html = """
       console.log("key: " + key);
       if(key && key.trim() != "") {
         console.log("added key " + key);
-        window.authorizations.add("key", new ApiKeyAuthorization("api_key", key, "query"));
+        window.authorizations.add("key", new ApiKeyAuthorization("Authentication-Token", key, "header"));
       }
     })
     window.swaggerUi.load();
@@ -75,7 +75,7 @@ homepage_html = """
         <img id="show-wordnik-dev-icon" src="http://rantav.github.io/flask-restful-swagger/static/images/wordnik_api.png" title="Show Wordnik Developer Apis">
       </div>
       <div class='input'><input placeholder="http://example.com/api" id="input_baseUrl" name="baseUrl" type="text"/></div>
-      <div class='input'><input disabled='disabled' placeholder="api_key" id="input_apiKey" name="apiKey" type="text"/></div>
+      <div class='input'><input placeholder="api_key" id="input_apiKey" name="apiKey" type="text"/></div>
       <div class='input'><a id="explore" href="#">Explore</a></div>
     </form>
   </div>

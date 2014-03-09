@@ -11,7 +11,7 @@ from flask_restful_swagger import html
 resource_listing_endpoint = None
 
 def docs(api, apiVersion='0.0', swaggerVersion='1.2',
-         basePath='http://localhost:5000',
+         basePath='http://127.0.0.1:5000',
          resourcePath='/',
          produces=["application/json"],
          api_spec_url='/api/spec'):
